@@ -33,7 +33,7 @@ require(
             } else {
                 ok(false, testString + ', ' + count + ' error(s): ' + errorString);
             }
-        }
+        };
 
         var checkJs = function(jsFile) {
 
@@ -76,9 +76,13 @@ require(
             //testString = 'Limit lines to 80 characters';
             //doRegexTest(jsFile, regex, testString);
 
-            //regex = /"/gm;
-            //testString = 'Use single quotes';
-            //doRegexTest(jsFile, regex, testString);
+            regex = /^[^'\'']*"/gm;
+            testString = 'Use single quotes';
+            doRegexTest(jsFile, regex, testString);
+
+            regex = /"[^'\'']*$/gm;
+            testString = 'Use single quotes';
+            doRegexTest(jsFile, regex, testString);
 
             regex = /(^|\s)(Object\.(freeze|preventExtensions|seal)|eval|with)(\s|$)/gm;
             testString = 'Evil';
